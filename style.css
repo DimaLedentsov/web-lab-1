@@ -1,0 +1,60 @@
+/* наследование */
+table{
+    border: 1;
+  
+    width: 100%;
+    color:blue
+
+}
+
+.columns,input[type="radio"]{
+    color: black;
+    text-align: center;
+    
+}
+
+.hat{
+    font-family: sans-serif; 
+    font-size: large;
+    color: black;
+    right: 2000;
+    text-align: center;
+    
+    
+}
+
+/* селекторов псевдоэлементов */
+.boots:after{
+    content:'🦆';
+}
+/* каскадирование */
+.boots{
+    text-align:center;
+    color:black;
+}
+
+
+/* селекторов псевдоклассов */
+.results th:hover{
+    color: blue;
+}
+
+
+/* селектор атрибутов */
+input[type="submit"]{
+    /* border-color:purple; */
+    color: blue;
+    background-color: white;
+    border:1px solid black;
+    border-radius: 2px;
+
+}
+
+
+/* селекторов дочерних элементов */
+th>i{
+    color: blue;
+    display: inline-block;
+    transform: rotate(77deg);
+    font-size:120%;
+}
