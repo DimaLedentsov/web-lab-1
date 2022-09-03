@@ -6,11 +6,8 @@ var validatedButton = document.querySelector('.validate_button');
 var xOptions = document.querySelectorAll(".x");
 var yCoordinate = document.querySelector(".y");
 var rCoordinate = document.querySelector(".R");
-var resultTable = document.querySelector("#result_table");
 
-resultTable.append = function(elem){
-  
-}
+
 function isNumber(n){
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
@@ -95,7 +92,7 @@ $("#inpform").on("submit", function(event){
       success: function(data){
         console.log(data);
         $(".validate_button").attr("disabled", false);	
-        
+        $("#result_table").append(data);
       },
       error: function(error){
         console.log(error);
