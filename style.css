@@ -1,7 +1,13 @@
-/* наследование */
-table{
-    width: 100%;
+html,body{
+    overflow: hidden;
     height: 100%;
+}
+
+
+/* наследование */
+body>table{
+    width: 100%;
+    height: 95%;
     color:blue;
 }
 /*
@@ -12,8 +18,9 @@ table{
 
 #result_table_container{
     margin-top: 0%;
-    display: flex;
-    max-height: 500px;
+    /*display: flex;*/
+    width: 100%;
+    height: 100%;
     overflow-y: auto;
 }
 
