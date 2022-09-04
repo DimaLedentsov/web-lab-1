@@ -1,12 +1,21 @@
 html,body{
     overflow: hidden;
     height: 100%;
+    width: 100%;
 }
 
+.areas{
+    width: 100%;
+    display: block;
+}
+
+.input{
+    margin-top: 10%;
+}
 
 /* наследование */
 body>table{
-    width: 100%;
+    width: inherit;
     height: 95%;
     color:blue;
 }

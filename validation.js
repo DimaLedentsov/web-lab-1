@@ -63,7 +63,7 @@ function validateField(coordinate,min,max){
 
 // фунция для повторной проверки, что поля заполнены верно, чтобы передать их php скрипту
 function validateAll(){
-  return checkSelection(xOptions)&&validateField(yCoordinate,-5,5) && validateField(rCoordinate,2,5);
+  return checkSelection(xOptions)&&validateField(yCoordinate,-3,5) && validateField(rCoordinate,2,5);
 }  
 
 
