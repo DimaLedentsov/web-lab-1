@@ -6,7 +6,7 @@ function validate_number($val, $min, $max){
 }
 
 function validate_timezone($timezone) {
-	return isset($timezone) && in_array($timezone, timezone_identifiers_list());
+	return isset($timezone);
 }
 
 // Проверка на попадание в область
@@ -41,17 +41,17 @@ if(validate_number($x,-2,2) && validate_number($y,-3,5) && validate_number($r,2,
 	
 	$answer = array("x"=>$x, "y"=>$y, "r"=>$r, "hit_fact"=>$hit_fact, "current_time"=>$current_time, "execution_time"=>$execution_time);
 	array_push($_SESSION['data'], $answer);
+}
 
-	foreach ($_SESSION['data'] as $elem){
-    	echo "<tr class='columns'>";
-		echo "<td>" . $elem['x'] . "</td>";
-		echo "<td>" . $elem['y'] . "</td>";
-		echo "<td>" . $elem['r'] . "</td>";
-		echo "<td>" . $elem['hit_fact']  . "</td>";
-		echo "<td>" . $elem['current_time']  . "</td>";
-		echo "<td>" . $elem['execution_time'] . "</td>";
-		echo "</tr>";
-	}
+foreach ($_SESSION['data'] as $elem){
+	echo "<tr class='columns'>";
+	echo "<td>" . $elem['x'] . "</td>";
+	echo "<td>" . $elem['y'] . "</td>";
+	echo "<td>" . $elem['r'] . "</td>";
+	echo "<td>" . $elem['hit_fact']  . "</td>";
+	echo "<td>" . $elem['current_time']  . "</td>";
+	echo "<td>" . $elem['execution_time'] . "</td>";
+	echo "</tr>";
 }
 
 ?>
