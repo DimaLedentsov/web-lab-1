@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">    <!-- подключение css -->
+    <link rel="stylesheet" href="css/style.css">    <!-- подключение css -->
     
     <title>LAB-1-WEB</title>
 </head>
@@ -25,10 +25,10 @@
 
         <!-- содержимое столбцов -->
         <tr>
-            <td width="30%"> <img class="areas" src="areas.png" alt="Фото графика"></td>    <!-- график -->
+            <td width="30%"> <img class="areas" src="img/areas.png" alt="Фото графика"></td>    <!-- график -->
             
             <td width="20%" valign="top">
-                <form id="inpform" action="script.php" class="validate_form" method="post"> <!-- координаты -->
+                <form id="inpform" action="php/server.php" class="validate_form" method="post"> <!-- координаты -->
 
                     <div class="input"><b>Enter Х:</b><br>
                         <div>
@@ -63,9 +63,8 @@
                     </div>
 
                     <br><input type="submit" class="validate_button" value='Submit'/>
-                
-
                 </form>
+                <input type="submit" class="reset_button" value='Reset table'/>
             </td>   
 
 
@@ -74,12 +73,17 @@
                 <div id="result_table_container">
                 <table id="result_table" border="1" cellpadding="0" cellspacing="0" width="100%" class="results">
                     <!-- <tr id="table_header"> -->
+                    <thead>
                         <th >X</th>
                         <th >Y</th>
                         <th >R</th>
                         <th >Hit fact</th>
                         <th >Current time</th>
                         <th >Script running time, sec</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
                 </table>
                 </div>
             </td>
@@ -95,6 +99,6 @@
     </table>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> <!-- подключение библиотеки JQuery для отправки POST запроса -->
-    <script src="validation.js" ></script>  <!-- подключение js -->
+    <script src="js/client.js" ></script>  <!-- подключение js -->
     </body>
 </html>

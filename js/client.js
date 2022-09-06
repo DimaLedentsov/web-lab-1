@@ -8,8 +8,9 @@ var yCoordinate = document.querySelector(".y");
 var rCoordinate = document.querySelector(".R");
 
 
-function isNumber(n){
-  return !isNaN(parseFloat(n)) && isFinite(n);
+function isNumber(s){
+  var n = parseFloat(s.replace(',','.'));
+  return !isNaN(n) && isFinite(n);
 }
 
 //функция для генерации ошибок
@@ -44,6 +45,7 @@ function checkSelection(radios) {
 // проверка значения в поле на попадание в заданный диапазон
 function validateField(coordinate,min,max){
   if(coordinate.value){
+      coordinate.value = coordinate.value.replace(',','.');
       if(coordinate.value<=min || coordinate.value>=max || !isNumber(coordinate.value)){
           var error = generateTip('Wrong number format','red')
           coordinate.parentElement.insertBefore(error, coordinate)              
@@ -66,8 +68,21 @@ function validateAll(){
   return checkSelection(xOptions)&&validateField(yCoordinate,-3,5) && validateField(rCoordinate,2,5);
 }  
 
+$(document).ready(function(){
 
-
+  $.ajax({
+    url: 'php/load.php',
+    method: "POST",
+    dataType: "html",
+    success: function(data){
+      console.log(data);
+      $("#result_table>tbody").html(data);
+    },
+    error: function(error){
+      console.log(error);	
+    },
+  })
+})
 
 $("#inpform").on("submit", function(event){
   event.preventDefault(); 
@@ -84,7 +99,7 @@ $("#inpform").on("submit", function(event){
     console.log("data sending...")
     console.log($(this).serialize());
     $.ajax({
-      url: 'script.php',
+      url: 'php/server.php',
       method: "POST",
       data: $(this).serialize() + "&timezone=" + new Date().getTimezoneOffset(),
       dataType: "html",
@@ -92,7 +107,7 @@ $("#inpform").on("submit", function(event){
       success: function(data){
         console.log(data);
         $(".validate_button").attr("disabled", false);	
-        $("#result_table").append(data);
+        $("#result_table>tbody").html(data);
       },
       error: function(error){
         console.log(error);
@@ -100,3 +115,18 @@ $("#inpform").on("submit", function(event){
       },
     })
 });
+
+$(".reset_button").on("click",function(){
+  $.ajax({
+    url: 'php/clear.php',
+    method: "POST",
+    dataType: "html",
+    success: function(data){
+      console.log(data);
+      $("#result_table>tbody").html(data);
+    },
+    error: function(error){
+      console.log(error);	
+    },
+  })
+})
