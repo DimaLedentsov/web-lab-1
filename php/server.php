@@ -1,8 +1,8 @@
 <?php
 // header('Access-Control-Allow-Origin: *');
 
-function validate($val){
-	return isset($val);
+function validate_number($val, $min, $max){
+	return isset($val) && is_numeric($val) && ($val>$min) && ($val<$max);
 }
 
 // Проверка на попадание в область
@@ -29,7 +29,7 @@ $y = @$_POST["y_coordinate"];
 $r = @$_POST["r_coordinate"];
 $timezone= @$_POST["timezone"];
 
-if(validate($x) && validate($y) && validate($r) && validate($timezone)){
+if(validate_number($x,-2,2) && validate_number($y,-3,5) && validate_number($r,2,5) && isset($timezone)){
     $is_inside = check_first_area($x, $y, $r) || check_second_area($x, $y, $r) || check_third_area($x, $y, $r);
 	$hit_fact = $is_inside ? "Hit": "Miss";
 	$current_time = date("j M o G:i:s", time()-$timezone*60);

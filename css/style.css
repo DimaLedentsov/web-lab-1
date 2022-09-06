@@ -45,8 +45,6 @@ body>table{
 }
 
 #result_table{
-    width: inherit;
-    height: inherit;
     border: 0px solid white; 
     padding: 0;
     
